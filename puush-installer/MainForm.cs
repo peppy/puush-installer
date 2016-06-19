@@ -1,4 +1,5 @@
-﻿using osu_common.Helpers;
+﻿using puush_installer.Helpers;
+using ShareX.HelpersLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,21 +30,38 @@ namespace puush_installer
             startDownload();
         }
 
+        BackgroundWorker bw = new BackgroundWorker();
+
         private void startDownload()
         {
-            labelProgress.Text = @"Beginning download...";
+            GitHubUpdateChecker checker = new GitHubUpdateChecker(@"ShareX", @"ShareX");
 
-            string url = @"https://github.com/ShareX/ShareX/releases/download/v11.0.1/ShareX-11.0.1-setup.exe";
-            FileWebRequest req = new FileWebRequest(@"sharex.exe", url);
-            req.DownloadProgress += downloadProgress;
-            req.Finished += downloadFInished;
-            req.Perform();
-        }
+            bw.DoWork += delegate
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    labelProgress.Text = @"Finding latest download...";
+                });
 
-        private void downloadFInished(WebRequest request, Exception e)
-        {
-            Process.Start(@"sharex.exe");
-            Environment.Exit(0);
+                string url = checker.GetLatestDownloadURL();
+
+                Invoke((MethodInvoker)delegate
+                {
+                    labelProgress.Text = @"Beginning download...";
+                });
+
+                FileWebRequest req = new FileWebRequest(@"sharex.exe", url);
+                req.DownloadProgress += downloadProgress;
+                req.BlockingPerform();
+
+                Invoke((MethodInvoker)delegate
+                {
+                    Process.Start(@"sharex.exe");
+                    Environment.Exit(0);
+                });
+            };
+
+            bw.RunWorkerAsync();
         }
 
         private void downloadProgress(WebRequest request, long current, long total)
