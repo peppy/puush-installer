@@ -26,16 +26,13 @@
 using System;
 using System.Net;
 using System.Web;
-using System.Windows.Forms;
 
 namespace ShareX.HelpersLib
 {
     public abstract class UpdateChecker
     {
-        public UpdateStatus Status { get; set; }
         public Version CurrentVersion { get; set; }
         public Version LatestVersion { get; set; }
-        public ReleaseChannelType ReleaseType { get; set; }
         public bool IsBeta { get; set; }
         public bool IsPortable { get; set; }
         public IWebProxy Proxy { get; set; }
@@ -60,26 +57,6 @@ namespace ShareX.HelpersLib
         }
 
         public string DownloadURL { get; set; }
-
-        private const bool forceUpdate = false; // For testing purposes
-
-        public void RefreshStatus()
-        {
-            if (CurrentVersion == null)
-            {
-                CurrentVersion = Version.Parse(Application.ProductVersion);
-            }
-
-            if (Status != UpdateStatus.UpdateCheckFailed && CurrentVersion != null && LatestVersion != null && !string.IsNullOrEmpty(DownloadURL) &&
-                (forceUpdate || Helpers.CompareVersion(CurrentVersion, LatestVersion) < 0 || (IsBeta && Helpers.CompareVersion(CurrentVersion, LatestVersion) == 0)))
-            {
-                Status = UpdateStatus.UpdateAvailable;
-            }
-            else
-            {
-                Status = UpdateStatus.UpToDate;
-            }
-        }
 
         public abstract void CheckUpdate();
     }

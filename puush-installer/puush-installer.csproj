@@ -36,10 +36,6 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SmartThreadPool, Version=2.2.3.0, Culture=neutral, PublicKeyToken=1126fe8b671e8a79, processorArchitecture=MSIL">
-      <HintPath>..\packages\SmartThreadPool.dll.2.2.3\lib\SmartThreadPool.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -53,11 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\ExtensionMethods.cs" />
-    <Compile Include="ShareX.HelpersLib\Enums.cs" />
-    <Compile Include="ShareX.HelpersLib\Extensions\Extensions.cs" />
+    <Compile Include="ShareX.HelpersLib\FileDownloader.cs" />
     <Compile Include="ShareX.HelpersLib\GitHubUpdateChecker.cs" />
-    <Compile Include="ShareX.HelpersLib\Helpers\Helpers.cs" />
     <Compile Include="ShareX.HelpersLib\UpdateChecker.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -67,7 +60,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper\WebRequest.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -41,13 +41,7 @@ namespace ShareX.HelpersLib
 
         private const string APIURL = "https://api.github.com";
 
-        private string ReleasesURL
-        {
-            get
-            {
-                return string.Format("{0}/repos/{1}/{2}/releases", APIURL, Owner, Repo);
-            }
-        }
+        private string ReleasesURL => $"{APIURL}/repos/{Owner}/{Repo}/releases";
 
         public GitHubUpdateChecker(string owner, string repo)
         {
@@ -57,78 +51,22 @@ namespace ShareX.HelpersLib
 
         public override void CheckUpdate()
         {
+        }
+
+        public string GetLatestDownloadURL(bool includePreRelease, bool isPortable, bool isBrowserDownloadURL)
+        {
             try
             {
-                List<GitHubRelease> releases = GetReleases();
+                GitHubRelease latestRelease = GetLatestRelease(includePreRelease);
 
-                if (releases != null && releases.Count > 0)
+                if (UpdateReleaseInfo(latestRelease, isPortable, isBrowserDownloadURL))
                 {
-                    GitHubRelease latestRelease;
-
-                    if (IncludePreRelease)
-                    {
-                        latestRelease = releases[0];
-                    }
-                    else
-                    {
-                        latestRelease = releases.FirstOrDefault(x => !x.prerelease);
-                    }
-
-                    if (latestRelease != null && !string.IsNullOrEmpty(latestRelease.tag_name) && latestRelease.tag_name.Length > 1 && latestRelease.tag_name[0] == 'v')
-                    {
-                        LatestVersion = new Version(latestRelease.tag_name.Substring(1));
-
-                        if (latestRelease.assets != null && latestRelease.assets.Count > 0)
-                        {
-                            string extension;
-
-                            if (IsPortable)
-                            {
-                                extension = "portable.zip";
-                            }
-                            else
-                            {
-                                extension = ".exe";
-                            }
-
-                            foreach (GitHubAsset asset in latestRelease.assets)
-                            {
-                                if (asset != null && !string.IsNullOrEmpty(asset.name) && asset.name.EndsWith(extension, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    Filename = asset.name;
-
-                                    if (IsPortable)
-                                    {
-                                        DownloadURL = asset.browser_download_url;
-                                    }
-                                    else
-                                    {
-                                        DownloadURL = asset.url;
-                                    }
-
-                                    RefreshStatus();
-                                    return;
-                                }
-                            }
-                        }
-                    }
+                    return DownloadURL;
                 }
             }
             catch (Exception e)
             {
-                //DebugHelper.WriteException(e, "GitHub update check failed");
-            }
-
-            Status = UpdateStatus.UpdateCheckFailed;
-        }
-
-        public string GetLatestDownloadURL()
-        {
-            List<GitHubRelease> releases = GetReleases();
-
-            if (releases != null && releases.Count > 0)
-            {
-                return GetDownloadURL(releases[0]);
+                //DebugHelper.WriteException(e);
             }
 
             return null;
@@ -140,25 +78,10 @@ namespace ShareX.HelpersLib
 
             foreach (GitHubRelease release in GetReleases().Where(x => x.assets != null && x.assets.Count > 0))
             {
-                sb.AppendFormat("{0} ({1}): {2}\r\n", release.name, DateTime.Parse(release.published_at), release.assets.Sum(x => x.download_count));
+                sb.AppendFormat("{0} ({1}): {2}{3}", release.name, DateTime.Parse(release.published_at), release.assets.Sum(x => x.download_count), Environment.NewLine);
             }
 
             return sb.ToString().Trim();
-        }
-
-        private string GetDownloadURL(GitHubRelease release)
-        {
-            if (release.assets != null && release.assets.Count > 0)
-            {
-                GitHubAsset asset = release.assets[0];
-
-                if (asset != null && !string.IsNullOrEmpty(asset.name))
-                {
-                    return string.Format("https://github.com/{0}/{1}/releases/download/{2}/{3}", Owner, Repo, release.tag_name, asset.name);
-                }
-            }
-
-            return null;
         }
 
         private List<GitHubRelease> GetReleases()
@@ -167,6 +90,7 @@ namespace ShareX.HelpersLib
             {
                 wc.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
                 wc.Headers.Add("user-agent", "ShareX");
+                wc.Proxy = Proxy;
 
                 string response = wc.DownloadString(ReleasesURL);
 
@@ -177,6 +101,70 @@ namespace ShareX.HelpersLib
             }
 
             return null;
+        }
+
+        private GitHubRelease GetLatestRelease(bool includePreRelease)
+        {
+            GitHubRelease latestRelease = null;
+
+            List<GitHubRelease> releases = GetReleases();
+
+            if (releases != null && releases.Count > 0)
+            {
+                if (includePreRelease)
+                {
+                    latestRelease = releases[0];
+                }
+                else
+                {
+                    latestRelease = releases.FirstOrDefault(x => !x.prerelease);
+                }
+            }
+
+            return latestRelease;
+        }
+
+        public bool UpdateReleaseInfo(GitHubRelease release, bool isPortable, bool isBrowserDownloadURL)
+        {
+            if (release != null && !string.IsNullOrEmpty(release.tag_name) && release.tag_name.Length > 1 && release.tag_name[0] == 'v')
+            {
+                LatestVersion = new Version(release.tag_name.Substring(1));
+
+                if (release.assets != null && release.assets.Count > 0)
+                {
+                    string endsWith;
+
+                    if (isPortable)
+                    {
+                        endsWith = "portable.zip";
+                    }
+                    else
+                    {
+                        endsWith = ".exe";
+                    }
+
+                    foreach (GitHubAsset asset in release.assets)
+                    {
+                        if (asset != null && !string.IsNullOrEmpty(asset.name) && asset.name.EndsWith(endsWith, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            Filename = asset.name;
+
+                            if (isBrowserDownloadURL)
+                            {
+                                DownloadURL = asset.browser_download_url;
+                            }
+                            else
+                            {
+                                DownloadURL = asset.url;
+                            }
+
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
     }
 
