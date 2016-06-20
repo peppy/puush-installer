@@ -46,15 +46,15 @@ namespace puush_installer
                     labelProgress.Text = "Beginning download...";
                     progressBar1.Style = ProgressBarStyle.Continuous;
 
-                    string downloadPath = Path.Combine(Path.GetTempPath(), checker.Filename);
+                    string downloadPath = checker.Filename;
                     FileStream fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.Read);
                     FileDownloader fileDownloader = new FileDownloader(checker.DownloadURL, fileStream, null, "application/octet-stream");
 
                     fileDownloader.ProgressChanged += (sender2, e2) =>
                     {
-                        progressBar1.Value = (int)Math.Round(fileDownloader.DownloadPercentage);
-                        labelProgress.Text = string.Format(CultureInfo.CurrentCulture, "Progress: {0:0.0}%\r\nDownload speed: {1:0.0} KB/s\r\nFile size: {2:n0} / {3:n0} KB",
-                            fileDownloader.DownloadPercentage, fileDownloader.DownloadSpeed / 1024, fileDownloader.DownloadedSize / 1024, fileDownloader.FileSize / 1024);
+                        int percentage = (int)Math.Round(fileDownloader.DownloadPercentage);
+                        progressBar1.Value = percentage;
+                        labelProgress.Text = $"Downloading ({percentage}% complete)";
                     };
 
                     fileDownloader.DownloadCompleted += (sender2, e2) =>
