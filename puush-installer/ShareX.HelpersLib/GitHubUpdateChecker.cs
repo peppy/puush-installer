@@ -168,6 +168,7 @@ namespace ShareX.HelpersLib
         }
     }
 
+    [Serializable]
     public class GitHubRelease
     {
         public string url { get; set; }
@@ -188,6 +189,7 @@ namespace ShareX.HelpersLib
         public string zipball_url { get; set; }
     }
 
+    [Serializable]
     public class GitHubAsset
     {
         public string url { get; set; }
