@@ -61,7 +61,7 @@ namespace puush_installer
                     {
                         if (File.Exists(downloadPath))
                         {
-                            Process.Start(downloadPath);
+                            Process.Start(downloadPath, "-puush");
                             Environment.Exit(0);
                         }
                     };
