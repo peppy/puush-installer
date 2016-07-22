@@ -64,7 +64,7 @@ namespace ShareX.HelpersLib
                     return DownloadURL;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //DebugHelper.WriteException(e);
             }
