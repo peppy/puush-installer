@@ -66,6 +66,7 @@
             this.pbProgress.Name = "pbProgress";
             this.pbProgress.Size = new System.Drawing.Size(368, 32);
             this.pbProgress.TabIndex = 0;
+            this.pbProgress.Visible = false;
             // 
             // pbPuushHeader
             // 
@@ -96,6 +97,7 @@
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(0, 16);
             this.lblProgress.TabIndex = 4;
+            this.lblProgress.Visible = false;
             // 
             // MainForm
             // 

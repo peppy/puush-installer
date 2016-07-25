@@ -45,7 +45,14 @@ namespace puush_installer
                     FileStream fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.Read);
                     FileDownloader fileDownloader = new FileDownloader(checker.DownloadURL, fileStream, null, "application/octet-stream");
 
-                    fileDownloader.FileSizeReceived += (sender2, e2) =>
+                    fileDownloader.ExceptionThrowed += (sender2, e2) =>
+                    {
+                        ResetControls();
+
+                        MessageBox.Show("Error:\r\n\r\n" + fileDownloader.LastException, "puush install", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    };
+
+                    fileDownloader.DownloadStarted += (sender2, e2) =>
                     {
                         lblProgress.Visible = false;
                         pbProgress.Visible = true;
@@ -70,15 +77,20 @@ namespace puush_installer
                 }
                 else
                 {
-                    btnStart.Visible = true;
-                    pbProgress.Visible = false;
-                    lblProgress.Visible = false;
+                    ResetControls();
 
                     MessageBox.Show("Unable to find latest ShareX build.", "puush install", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
 
             bw.RunWorkerAsync();
+        }
+
+        private void ResetControls()
+        {
+            btnStart.Visible = true;
+            pbProgress.Visible = false;
+            lblProgress.Visible = false;
         }
     }
 }
