@@ -168,6 +168,7 @@ namespace puush_installer.ShareX.HelpersLib
         }
     }
 
+    [System.Reflection.ObfuscationAttribute(Feature = "renaming", ApplyToMembers = true)]
     [Serializable]
     public class GitHubRelease
     {
@@ -189,6 +190,7 @@ namespace puush_installer.ShareX.HelpersLib
         public string zipball_url { get; set; }
     }
 
+    [System.Reflection.ObfuscationAttribute(Feature = "renaming", ApplyToMembers = true)]
     [Serializable]
     public class GitHubAsset
     {
