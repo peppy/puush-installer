@@ -81,10 +81,8 @@
     <None Include="Resources\puush-header.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ShareX_1024.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\ShareX-header.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

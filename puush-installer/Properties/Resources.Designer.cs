@@ -65,7 +65,7 @@ namespace puush_installer.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap puush_header {
             get {
-                object obj = ResourceManager.GetObject("puush-header", resourceCulture);
+                object obj = ResourceManager.GetObject("puush_header", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace puush_installer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShareX_1024 {
+        internal static System.Drawing.Bitmap ShareX_header {
             get {
-                object obj = ResourceManager.GetObject("ShareX_1024", resourceCulture);
+                object obj = ResourceManager.GetObject("ShareX_header", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

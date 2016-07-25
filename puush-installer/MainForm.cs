@@ -21,8 +21,10 @@ namespace puush_installer
 
         private void StartDownload()
         {
-            pStart.Visible = false;
+            pbProgress.Visible = false;
+            btnStart.Visible = false;
             lblProgress.Text = "Finding latest download...";
+            lblProgress.Visible = true;
 
             GitHubUpdateChecker checker = null;
             BackgroundWorker bw = new BackgroundWorker();
@@ -38,17 +40,21 @@ namespace puush_installer
                 if (checker != null && !string.IsNullOrEmpty(checker.DownloadURL))
                 {
                     lblProgress.Text = "Beginning download...";
-                    pbProgress.Style = ProgressBarStyle.Continuous;
 
                     string downloadPath = checker.Filename;
                     FileStream fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.Read);
                     FileDownloader fileDownloader = new FileDownloader(checker.DownloadURL, fileStream, null, "application/octet-stream");
 
+                    fileDownloader.FileSizeReceived += (sender2, e2) =>
+                    {
+                        lblProgress.Visible = false;
+                        pbProgress.Visible = true;
+                    };
+
                     fileDownloader.ProgressChanged += (sender2, e2) =>
                     {
                         int percentage = (int)Math.Round(fileDownloader.DownloadPercentage);
                         pbProgress.Value = percentage;
-                        lblProgress.Text = $"Downloading ({percentage}% complete)";
                     };
 
                     fileDownloader.DownloadCompleted += (sender2, e2) =>
@@ -64,8 +70,11 @@ namespace puush_installer
                 }
                 else
                 {
-                    lblProgress.Text = "Unable to find latest build.";
-                    pStart.Visible = true;
+                    btnStart.Visible = true;
+                    pbProgress.Visible = false;
+                    lblProgress.Visible = false;
+
+                    MessageBox.Show("Unable to find latest ShareX build.", "puush install", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
 
