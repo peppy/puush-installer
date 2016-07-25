@@ -23,15 +23,15 @@
 
 #endregion License Information (GPL v3)
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Text;
+using Newtonsoft.Json;
 
-namespace ShareX.HelpersLib
+namespace puush_installer.ShareX.HelpersLib
 {
     public class GitHubUpdateChecker : UpdateChecker
     {

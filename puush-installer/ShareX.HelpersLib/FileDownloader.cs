@@ -30,7 +30,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-namespace ShareX.HelpersLib
+namespace puush_installer.ShareX.HelpersLib
 {
     public class FileDownloader
     {

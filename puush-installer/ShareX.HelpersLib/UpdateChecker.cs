@@ -27,7 +27,7 @@ using System;
 using System.Net;
 using System.Web;
 
-namespace ShareX.HelpersLib
+namespace puush_installer.ShareX.HelpersLib
 {
     public abstract class UpdateChecker
     {

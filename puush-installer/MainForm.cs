@@ -1,5 +1,4 @@
-﻿using ShareX.HelpersLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -9,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using puush_installer.ShareX.HelpersLib;
 
 namespace puush_installer
 {
