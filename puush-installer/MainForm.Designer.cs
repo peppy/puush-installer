@@ -47,7 +47,6 @@
             // 
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.Location = new System.Drawing.Point(6, 144);
-            this.lblInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(375, 108);
             this.lblInfo.TabIndex = 1;
@@ -57,7 +56,6 @@
             // 
             this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnStart.Location = new System.Drawing.Point(108, 36);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(173, 60);
             this.btnStart.TabIndex = 2;
@@ -70,7 +68,6 @@
             this.pbShareXHeader.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pbShareXHeader.Image = global::puush_installer.Properties.Resources.ShareX_1024;
             this.pbShareXHeader.Location = new System.Drawing.Point(0, 264);
-            this.pbShareXHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbShareXHeader.Name = "pbShareXHeader";
             this.pbShareXHeader.Size = new System.Drawing.Size(387, 106);
             this.pbShareXHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -83,7 +80,6 @@
             this.pbPuushHeader.Image = global::puush_installer.Properties.Resources.puush_header;
             this.pbPuushHeader.InitialImage = global::puush_installer.Properties.Resources.puush_header;
             this.pbPuushHeader.Location = new System.Drawing.Point(0, 0);
-            this.pbPuushHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbPuushHeader.Name = "pbPuushHeader";
             this.pbPuushHeader.Size = new System.Drawing.Size(387, 132);
             this.pbPuushHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -94,7 +90,6 @@
             // 
             this.pStart.Controls.Add(this.btnStart);
             this.pStart.Location = new System.Drawing.Point(0, 372);
-            this.pStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pStart.Name = "pStart";
             this.pStart.Size = new System.Drawing.Size(387, 126);
             this.pStart.TabIndex = 4;
@@ -104,7 +99,6 @@
             this.pDownload.Controls.Add(this.lblProgress);
             this.pDownload.Controls.Add(this.pbProgress);
             this.pDownload.Location = new System.Drawing.Point(0, 374);
-            this.pDownload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pDownload.Name = "pDownload";
             this.pDownload.Size = new System.Drawing.Size(387, 122);
             this.pDownload.TabIndex = 5;
@@ -113,7 +107,6 @@
             // 
             this.lblProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblProgress.Location = new System.Drawing.Point(0, 62);
-            this.lblProgress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(387, 60);
             this.lblProgress.TabIndex = 1;
@@ -122,7 +115,6 @@
             // pbProgress
             // 
             this.pbProgress.Location = new System.Drawing.Point(9, 24);
-            this.pbProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbProgress.MarqueeAnimationSpeed = 50;
             this.pbProgress.Name = "pbProgress";
             this.pbProgress.Size = new System.Drawing.Size(365, 34);
@@ -131,9 +123,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.White;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(387, 498);
             this.Controls.Add(this.pbShareXHeader);
             this.Controls.Add(this.lblInfo);
@@ -142,7 +134,7 @@
             this.Controls.Add(this.pDownload);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "puush install";
