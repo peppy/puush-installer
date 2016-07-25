@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using puush_installer.ShareX.HelpersLib;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using puush_installer.ShareX.HelpersLib;
 
 namespace puush_installer
 {
