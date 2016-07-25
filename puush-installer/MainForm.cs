@@ -14,15 +14,15 @@ namespace puush_installer
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnStart_Click(object sender, EventArgs e)
         {
-            startDownload();
+            StartDownload();
         }
 
-        private void startDownload()
+        private void StartDownload()
         {
-            panelStart.Visible = false;
-            labelProgress.Text = "Finding latest download...";
+            pStart.Visible = false;
+            lblProgress.Text = "Finding latest download...";
 
             GitHubUpdateChecker checker = null;
             BackgroundWorker bw = new BackgroundWorker();
@@ -37,8 +37,8 @@ namespace puush_installer
             {
                 if (checker != null && !string.IsNullOrEmpty(checker.DownloadURL))
                 {
-                    labelProgress.Text = "Beginning download...";
-                    progressBar1.Style = ProgressBarStyle.Continuous;
+                    lblProgress.Text = "Beginning download...";
+                    pbProgress.Style = ProgressBarStyle.Continuous;
 
                     string downloadPath = checker.Filename;
                     FileStream fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.Read);
@@ -47,8 +47,8 @@ namespace puush_installer
                     fileDownloader.ProgressChanged += (sender2, e2) =>
                     {
                         int percentage = (int)Math.Round(fileDownloader.DownloadPercentage);
-                        progressBar1.Value = percentage;
-                        labelProgress.Text = $"Downloading ({percentage}% complete)";
+                        pbProgress.Value = percentage;
+                        lblProgress.Text = $"Downloading ({percentage}% complete)";
                     };
 
                     fileDownloader.DownloadCompleted += (sender2, e2) =>
@@ -64,8 +64,8 @@ namespace puush_installer
                 }
                 else
                 {
-                    labelProgress.Text = "Unable to find latest build.";
-                    panelStart.Visible = true;
+                    lblProgress.Text = "Unable to find latest build.";
+                    pStart.Visible = true;
                 }
             };
 

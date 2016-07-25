@@ -29,132 +29,141 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelStart = new System.Windows.Forms.Panel();
-            this.panelDownload = new System.Windows.Forms.Panel();
-            this.labelProgress = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelStart.SuspendLayout();
-            this.panelDownload.SuspendLayout();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.pbShareXHeader = new System.Windows.Forms.PictureBox();
+            this.pbPuushHeader = new System.Windows.Forms.PictureBox();
+            this.pStart = new System.Windows.Forms.Panel();
+            this.pDownload = new System.Windows.Forms.Panel();
+            this.lblProgress = new System.Windows.Forms.Label();
+            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            ((System.ComponentModel.ISupportInitialize)(this.pbShareXHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPuushHeader)).BeginInit();
+            this.pStart.SuspendLayout();
+            this.pDownload.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblInfo
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 289);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(750, 217);
-            this.label1.TabIndex = 1;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.Location = new System.Drawing.Point(6, 144);
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(375, 108);
+            this.lblInfo.TabIndex = 1;
+            this.lblInfo.Text = resources.GetString("lblInfo.Text");
             // 
-            // button1
+            // btnStart
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(217, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(346, 120);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnStart.Location = new System.Drawing.Point(108, 36);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(173, 60);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // pictureBox2
+            // pbShareXHeader
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox2.Image = global::puush_installer.Properties.Resources.ShareX_1024;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 528);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(774, 211);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.pbShareXHeader.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pbShareXHeader.Image = global::puush_installer.Properties.Resources.ShareX_1024;
+            this.pbShareXHeader.Location = new System.Drawing.Point(0, 264);
+            this.pbShareXHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbShareXHeader.Name = "pbShareXHeader";
+            this.pbShareXHeader.Size = new System.Drawing.Size(387, 106);
+            this.pbShareXHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbShareXHeader.TabIndex = 3;
+            this.pbShareXHeader.TabStop = false;
             // 
-            // pictureBox1
+            // pbPuushHeader
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::puush_installer.Properties.Resources.puush_header;
-            this.pictureBox1.InitialImage = global::puush_installer.Properties.Resources.puush_header;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(774, 263);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbPuushHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pbPuushHeader.Image = global::puush_installer.Properties.Resources.puush_header;
+            this.pbPuushHeader.InitialImage = global::puush_installer.Properties.Resources.puush_header;
+            this.pbPuushHeader.Location = new System.Drawing.Point(0, 0);
+            this.pbPuushHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbPuushHeader.Name = "pbPuushHeader";
+            this.pbPuushHeader.Size = new System.Drawing.Size(387, 132);
+            this.pbPuushHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPuushHeader.TabIndex = 0;
+            this.pbPuushHeader.TabStop = false;
             // 
-            // panelStart
+            // pStart
             // 
-            this.panelStart.Controls.Add(this.button1);
-            this.panelStart.Location = new System.Drawing.Point(0, 743);
-            this.panelStart.Name = "panelStart";
-            this.panelStart.Size = new System.Drawing.Size(774, 251);
-            this.panelStart.TabIndex = 4;
+            this.pStart.Controls.Add(this.btnStart);
+            this.pStart.Location = new System.Drawing.Point(0, 372);
+            this.pStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pStart.Name = "pStart";
+            this.pStart.Size = new System.Drawing.Size(387, 126);
+            this.pStart.TabIndex = 4;
             // 
-            // panelDownload
+            // pDownload
             // 
-            this.panelDownload.Controls.Add(this.labelProgress);
-            this.panelDownload.Controls.Add(this.progressBar1);
-            this.panelDownload.Location = new System.Drawing.Point(0, 747);
-            this.panelDownload.Name = "panelDownload";
-            this.panelDownload.Size = new System.Drawing.Size(774, 244);
-            this.panelDownload.TabIndex = 5;
+            this.pDownload.Controls.Add(this.lblProgress);
+            this.pDownload.Controls.Add(this.pbProgress);
+            this.pDownload.Location = new System.Drawing.Point(0, 374);
+            this.pDownload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pDownload.Name = "pDownload";
+            this.pDownload.Size = new System.Drawing.Size(387, 122);
+            this.pDownload.TabIndex = 5;
             // 
-            // labelProgress
+            // lblProgress
             // 
-            this.labelProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelProgress.Location = new System.Drawing.Point(0, 124);
-            this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(774, 120);
-            this.labelProgress.TabIndex = 1;
-            this.labelProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblProgress.Location = new System.Drawing.Point(0, 62);
+            this.lblProgress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(387, 60);
+            this.lblProgress.TabIndex = 1;
+            this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // progressBar1
+            // pbProgress
             // 
-            this.progressBar1.Location = new System.Drawing.Point(18, 47);
-            this.progressBar1.MarqueeAnimationSpeed = 50;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(730, 69);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 0;
+            this.pbProgress.Location = new System.Drawing.Point(9, 24);
+            this.pbProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbProgress.MarqueeAnimationSpeed = 50;
+            this.pbProgress.Name = "pbProgress";
+            this.pbProgress.Size = new System.Drawing.Size(365, 34);
+            this.pbProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pbProgress.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(774, 996);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panelStart);
-            this.Controls.Add(this.panelDownload);
+            this.ClientSize = new System.Drawing.Size(387, 498);
+            this.Controls.Add(this.pbShareXHeader);
+            this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.pbPuushHeader);
+            this.Controls.Add(this.pStart);
+            this.Controls.Add(this.pDownload);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "puush install";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelStart.ResumeLayout(false);
-            this.panelDownload.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbShareXHeader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPuushHeader)).EndInit();
+            this.pStart.ResumeLayout(false);
+            this.pDownload.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panelStart;
-        private System.Windows.Forms.Panel panelDownload;
-        private System.Windows.Forms.Label labelProgress;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.PictureBox pbPuushHeader;
+        private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.PictureBox pbShareXHeader;
+        private System.Windows.Forms.Panel pStart;
+        private System.Windows.Forms.Panel pDownload;
+        private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.ProgressBar pbProgress;
     }
 }
 
