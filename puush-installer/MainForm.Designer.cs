@@ -32,9 +32,9 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.lblProgress = new System.Windows.Forms.Label();
             this.pbPuushHeader = new System.Windows.Forms.PictureBox();
             this.pbShareXHeader = new System.Windows.Forms.PictureBox();
-            this.lblProgress = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPuushHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbShareXHeader)).BeginInit();
             this.SuspendLayout();
@@ -45,14 +45,14 @@
             this.lblInfo.Location = new System.Drawing.Point(0, 140);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblInfo.Size = new System.Drawing.Size(387, 104);
+            this.lblInfo.Size = new System.Drawing.Size(384, 104);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = resources.GetString("lblInfo.Text");
             // 
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(8, 408);
+            this.btnStart.Location = new System.Drawing.Point(8, 384);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(368, 32);
             this.btnStart.TabIndex = 2;
@@ -62,11 +62,21 @@
             // 
             // pbProgress
             // 
-            this.pbProgress.Location = new System.Drawing.Point(8, 408);
+            this.pbProgress.Location = new System.Drawing.Point(8, 384);
             this.pbProgress.Name = "pbProgress";
             this.pbProgress.Size = new System.Drawing.Size(368, 32);
             this.pbProgress.TabIndex = 0;
             this.pbProgress.Visible = false;
+            // 
+            // lblProgress
+            // 
+            this.lblProgress.AutoSize = true;
+            this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgress.Location = new System.Drawing.Point(16, 392);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(0, 16);
+            this.lblProgress.TabIndex = 4;
+            this.lblProgress.Visible = false;
             // 
             // pbPuushHeader
             // 
@@ -74,37 +84,27 @@
             this.pbPuushHeader.Image = global::puush_installer.Properties.Resources.puush_header;
             this.pbPuushHeader.Location = new System.Drawing.Point(0, 0);
             this.pbPuushHeader.Name = "pbPuushHeader";
-            this.pbPuushHeader.Size = new System.Drawing.Size(387, 132);
+            this.pbPuushHeader.Size = new System.Drawing.Size(385, 132);
             this.pbPuushHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPuushHeader.TabIndex = 0;
             this.pbPuushHeader.TabStop = false;
             // 
             // pbShareXHeader
             // 
-            this.pbShareXHeader.Image = global::puush_installer.Properties.Resources.ShareX_header;
-            this.pbShareXHeader.Location = new System.Drawing.Point(0, 248);
+            this.pbShareXHeader.Image = global::puush_installer.Properties.Resources.ShareX_512;
+            this.pbShareXHeader.Location = new System.Drawing.Point(0, 246);
             this.pbShareXHeader.Name = "pbShareXHeader";
-            this.pbShareXHeader.Size = new System.Drawing.Size(387, 152);
+            this.pbShareXHeader.Size = new System.Drawing.Size(385, 128);
             this.pbShareXHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbShareXHeader.TabIndex = 3;
             this.pbShareXHeader.TabStop = false;
-            // 
-            // lblProgress
-            // 
-            this.lblProgress.AutoSize = true;
-            this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgress.Location = new System.Drawing.Point(16, 416);
-            this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(0, 16);
-            this.lblProgress.TabIndex = 4;
-            this.lblProgress.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(387, 450);
+            this.ClientSize = new System.Drawing.Size(385, 425);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.pbProgress);
