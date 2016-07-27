@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using puush_installer.ShareX.HelpersLib;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using puush_installer.ShareX.HelpersLib;
 
 namespace puush_installer
 {
@@ -19,15 +14,17 @@ namespace puush_installer
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnStart_Click(object sender, EventArgs e)
         {
-            startDownload();
+            StartDownload();
         }
 
-        private void startDownload()
+        private void StartDownload()
         {
-            panelStart.Visible = false;
-            labelProgress.Text = "Finding latest download...";
+            pbProgress.Visible = false;
+            btnStart.Visible = false;
+            lblProgress.Text = "Finding latest download...";
+            lblProgress.Visible = true;
 
             GitHubUpdateChecker checker = null;
             BackgroundWorker bw = new BackgroundWorker();
@@ -42,18 +39,29 @@ namespace puush_installer
             {
                 if (checker != null && !string.IsNullOrEmpty(checker.DownloadURL))
                 {
-                    labelProgress.Text = "Beginning download...";
-                    progressBar1.Style = ProgressBarStyle.Continuous;
+                    lblProgress.Text = "Beginning download...";
 
                     string downloadPath = checker.Filename;
                     FileStream fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.Read);
                     FileDownloader fileDownloader = new FileDownloader(checker.DownloadURL, fileStream, null, "application/octet-stream");
 
+                    fileDownloader.ExceptionThrowed += (sender2, e2) =>
+                    {
+                        ResetControls();
+
+                        MessageBox.Show("Error:\r\n\r\n" + fileDownloader.LastException, "puush install", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    };
+
+                    fileDownloader.DownloadStarted += (sender2, e2) =>
+                    {
+                        lblProgress.Visible = false;
+                        pbProgress.Visible = true;
+                    };
+
                     fileDownloader.ProgressChanged += (sender2, e2) =>
                     {
                         int percentage = (int)Math.Round(fileDownloader.DownloadPercentage);
-                        progressBar1.Value = percentage;
-                        labelProgress.Text = $"Downloading ({percentage}% complete)";
+                        pbProgress.Value = percentage;
                     };
 
                     fileDownloader.DownloadCompleted += (sender2, e2) =>
@@ -69,12 +77,20 @@ namespace puush_installer
                 }
                 else
                 {
-                    labelProgress.Text = "Unable to find latest build.";
-                    panelStart.Visible = true;
+                    ResetControls();
+
+                    MessageBox.Show("Unable to find latest ShareX build.", "puush install", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
 
             bw.RunWorkerAsync();
+        }
+
+        private void ResetControls()
+        {
+            btnStart.Visible = true;
+            pbProgress.Visible = false;
+            lblProgress.Visible = false;
         }
     }
 }
