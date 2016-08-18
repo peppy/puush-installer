@@ -41,7 +41,7 @@ namespace puush_installer
                 {
                     lblProgress.Text = "Beginning download...";
 
-                    string downloadPath = checker.Filename;
+                    string downloadPath = GetDownloadPath(checker.Filename);
                     FileStream fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write, FileShare.Read);
                     FileDownloader fileDownloader = new FileDownloader(checker.DownloadURL, fileStream, null, "application/octet-stream");
 
@@ -84,6 +84,25 @@ namespace puush_installer
             };
 
             bw.RunWorkerAsync();
+        }
+
+        private string GetDownloadPath(string filename)
+        {
+            string downloadFolder = "";
+
+            string tempFolder = Path.GetTempPath();
+
+            if (!string.IsNullOrEmpty(tempFolder))
+            {
+                downloadFolder = Path.Combine(tempFolder, "ShareX");
+
+                if (!Directory.Exists(downloadFolder))
+                {
+                    Directory.CreateDirectory(downloadFolder);
+                }
+            }
+
+            return Path.Combine(downloadFolder, filename);
         }
 
         private void ResetControls()
